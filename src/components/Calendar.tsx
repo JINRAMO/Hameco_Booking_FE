@@ -139,7 +139,7 @@ const Calendar: React.FC<DesignerData> = ({ availableHours }) => {
           {days}
         </div>
       </div>
-      <div className='mt-4'>
+      <div className='mt-4 min-h-[90px]'>
         {getAvailableHours().map((hour) => (
           <label
             key={hour}

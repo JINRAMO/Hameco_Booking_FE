@@ -1,17 +1,8 @@
 import React from "react";
-
-type Store = {
-  // storeId: number;
-  storeName: string;
-  storeAddress: string;
-  storePhone: string;
-  storeType: string;
-  createdAt: string;
-  rating: number;
-};
+import { GetDetailResponse } from "../utils/apies/store/GetDetail";
 
 interface StoreInfoProps {
-  store: Store;
+  store: GetDetailResponse;
 }
 
 const StoreInfo: React.FC<StoreInfoProps> = ({ store }) => {
@@ -26,7 +17,7 @@ const StoreInfo: React.FC<StoreInfoProps> = ({ store }) => {
   } = store;
 
   return (
-    <div className='relative overflow-x-auto bg-white shadow-lg'>
+    <div className='relative overflow-x-auto bg-white shadow-md'>
       <table className='w-full text-sm text-left text-gray-500'>
         <tbody>
           <tr className='bg-white border-b border-gray-200'>
@@ -70,4 +61,3 @@ const StoreInfo: React.FC<StoreInfoProps> = ({ store }) => {
 };
 
 export default StoreInfo;
-export type { Store };

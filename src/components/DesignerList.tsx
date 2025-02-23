@@ -13,9 +13,12 @@ interface DesignerListProps {
 const DesignerList: React.FC<DesignerListProps> = ({ designers }) => {
   return (
     <div className='bg-white shadow-md rounded-lg overflow-hidden'>
-      <ul className='divide-y divide-gray-200'>
+      <div className='grid gap-6'>
         {designers.map((designer, index) => (
-          <li key={index} className='p-6'>
+          <div
+            key={index}
+            className='p-bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300'
+          >
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
                 <div className='bg-gray-200 rounded-full h-12 w-12 flex items-center justify-center'>
@@ -34,9 +37,9 @@ const DesignerList: React.FC<DesignerListProps> = ({ designers }) => {
                 </p>
               </div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
