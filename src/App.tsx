@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
+import MainPage from "./pages/mainPage/MainPage";
 import DefaultLayout from "./layouts/DefaultLayout";
 import StoreDetailPage from "./pages/StoreDetailPage";
 

@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import StoreInfo from "../components/StoreInfo";
-import getDetail, { Store } from "../utils/apies/store/GetDetail";
+import getStore, { Store } from "../utils/apies/store/getStore";
 import DesignerList, { Designer } from "../components/DesignerList";
 import Calendar, { AvailableHours } from "../components/Calendar";
 import ReviewList from "../components/ReviewList";
-import getReviews, { Review } from "../utils/apies/store/GetReviews";
+import getReviewsByStore, {
+  Review,
+} from "../utils/apies/store/getReviewsByStore";
 
 const StoreDetailPage: React.FC = () => {
   const [storeData, setStoreData] = useState<Store | null>(null);
   const [reviewData, setReviewData] = useState<Review[] | null>(null);
 
   useEffect(() => {
-    getDetail(1).then((data) => {
+    getStore(1).then((data) => {
       setStoreData(data);
     });
-    getReviews(1).then((data) => {
+    getReviewsByStore(1).then((data) => {
       setReviewData(data);
       console.log(data);
     });

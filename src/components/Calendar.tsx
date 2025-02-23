@@ -1,20 +1,16 @@
 import React, { useState, useMemo } from "react";
-
-type AvailableHours = {
-  Monday?: number[];
-  Tuesday?: number[];
-  Wednesday?: number[];
-  Thursday?: number[];
-  Friday?: number[];
-  Saturday?: number[];
-  Sunday?: number[];
-};
+import { AvailableHours } from "../entities/AvailableHours";
 
 interface DesignerData {
+  //TODO: data 말고 props로 이름 변경
   availableHours: AvailableHours;
+  dayHeightSize?: number;
 }
 
-const Calendar: React.FC<DesignerData> = ({ availableHours }) => {
+const Calendar: React.FC<DesignerData> = ({
+  availableHours,
+  dayHeightSize = 4,
+}) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedHour, setSelectedHour] = useState<number | null>(null);
@@ -48,7 +44,7 @@ const Calendar: React.FC<DesignerData> = ({ availableHours }) => {
       daysArray.push(
         <div
           key={i}
-          className={`p-2 cursor-pointer ${
+          className={`p-${dayHeightSize} cursor-pointer ${
             selectedDate && date.toDateString() === selectedDate.toDateString()
               ? "bg-blue-200"
               : ""

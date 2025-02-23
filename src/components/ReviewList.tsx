@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Review } from "../utils/apies/store/GetReviews";
+import { Review } from "../entities/Review";
 
-interface ReviewListProps {
+interface ReviewsProps {
   reviews: Review[];
 }
 
@@ -27,7 +27,7 @@ const renderStars = (rating: number) => {
   );
 };
 
-const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
+const ReviewList: React.FC<ReviewsProps> = ({ reviews }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // 총 페이지 수 계산

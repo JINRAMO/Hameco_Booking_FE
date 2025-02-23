@@ -1,10 +1,10 @@
 import { api } from "../../api";
 import { Store } from "../../../entities/Store";
 
-const getList = async () => {
+const getStores = async () => {
   const response = await api.get<Store[]>(`/store`);
   return response;
 };
 
-export default getList;
+export default getStores;
 export type { Store };

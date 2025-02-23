@@ -1,28 +1,23 @@
-import React, { useState, useEffect } from "react";
-import getList, { Store } from "../utils/apies/store/GetList";
+import React from "react";
+import { Store } from "../entities/Store";
 
-const MainUserPage: React.FC = () => {
-  const [storeList, setStoreList] = useState<Store[] | null>(null);
+interface StoreCardsProps {
+  stores: Store[];
+  size?: "1/2" | "1"; // 화면 2분할 또는 전체
+}
 
-  useEffect(() => {
-    getList().then((data) => {
-      setStoreList(data);
-    });
-  }, []);
-
-  if (!storeList) {
-    return (
-      <div className='flex justify-center items-center h-screen'>
-        <p className='text-xl font-semibold'>Loading...</p>
-      </div>
-    );
-  }
-
+const StoreCardList: React.FC<StoreCardsProps> = ({ stores, size = "1" }) => {
   return (
     <div className='p-8 bg-gray-100 min-h-screen'>
       <h1 className='text-3xl font-bold mb-6 text-center'>Store List</h1>
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-        {storeList.map((store) => (
+      <div
+        className={`${
+          size == "1"
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            : "grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-6"
+        }`}
+      >
+        {stores.map((store) => (
           <div
             key={store.storeId}
             className='bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow duration-300'
@@ -61,4 +56,4 @@ const MainUserPage: React.FC = () => {
   );
 };
 
-export default MainUserPage;
+export default StoreCardList;

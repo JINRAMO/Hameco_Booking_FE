@@ -1,5 +1,5 @@
 import React from "react";
-import { Store } from "../utils/apies/store/GetDetail";
+import { Store } from "../entities/Store";
 
 interface StoreInfoProps {
   store: Store;

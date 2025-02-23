@@ -12,11 +12,11 @@ export const baseApi: AxiosInstance = axios.create({
 baseApi.interceptors.request.use(
   (config) => {
     // const Token = localStorage.getItem("Authorization");
-    const Token = "1";
+    const Authorization = "1";
 
     // Authorization 헤더 추가
-    if (Token) {
-      config.headers.access = Token;
+    if (Authorization) {
+      config.headers.Authorization = Authorization;
     }
 
     return config;
