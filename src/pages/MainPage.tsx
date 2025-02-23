@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import MainDesignerPage from "./MainDesignerPage";
+import MainManagerPage from "./MainManagerPage";
+import MainUserPage from "./MainUserPage";
+
+type UserType = "designer" | "manager" | "user";
 
 const MainPage: React.FC = () => {
-  return (
-    <div>
-      <h1>Main Page</h1>
-      <p>This is the main page.</p>
-    </div>
-  );
-};
+  // 디자이너인지 점장인지 사용자인지 구분하는 변수
+  const [userType] = useState<UserType>("user");
 
+  if (userType === "designer") {
+    return <MainDesignerPage />;
+  } else if (userType === "manager") {
+    return <MainManagerPage />;
+  } else {
+    return <MainUserPage />;
+  }
+};
 export default MainPage;

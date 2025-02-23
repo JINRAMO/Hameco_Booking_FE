@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import StoreInfo from "../components/StoreInfo";
-import getDetail, { GetDetailResponse } from "../utils/apies/store/GetDetail";
+import getDetail, { Store } from "../utils/apies/store/GetDetail";
 import DesignerList, { Designer } from "../components/DesignerList";
 import Calendar, { AvailableHours } from "../components/Calendar";
 import ReviewList from "../components/ReviewList";
 import getReviews, { Review } from "../utils/apies/store/GetReviews";
 
 const StoreDetailPage: React.FC = () => {
-  const [storeData, setStoreData] = useState<GetDetailResponse | null>(null);
+  const [storeData, setStoreData] = useState<Store | null>(null);
   const [reviewData, setReviewData] = useState<Review[] | null>(null);
 
   useEffect(() => {

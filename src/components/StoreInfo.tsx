@@ -1,8 +1,8 @@
 import React from "react";
-import { GetDetailResponse } from "../utils/apies/store/GetDetail";
+import { Store } from "../utils/apies/store/GetDetail";
 
 interface StoreInfoProps {
-  store: GetDetailResponse;
+  store: Store;
 }
 
 const StoreInfo: React.FC<StoreInfoProps> = ({ store }) => {

@@ -1,13 +1,5 @@
 import { api } from "../../api";
-
-type Review = {
-  reviewId: number;
-  username: string;
-  procedureName: string;
-  rating: number;
-  content: string;
-  createdAt: string; // ISO 형식의 날짜 문자열
-};
+import { Review } from "../../../entities/Review";
 
 const getReviews = async (storeId: number): Promise<Review[]> => {
   const response = await api.get<Review[]>(`/store/${storeId}/reviews`);
