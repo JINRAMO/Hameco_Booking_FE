@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-
-type Review = {
-  reviewId: number;
-  username: string;
-  procedureName: string;
-  rating: number;
-  content: string;
-  createdAt: string; // ISO 형식의 날짜 문자열
-};
+import { Review } from "../utils/apies/store/GetReviews";
 
 interface ReviewListProps {
   reviews: Review[];
@@ -68,16 +60,21 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
                   </p>
                 </div>
               </div>
-              <div>{renderStars(review.rating)}</div>
+              <div className='flex flex-col items-center'>
+                <div className='mb-2'>
+                  <p className='text-gray-600'>
+                    <span className='px-3 py-1 bg-gray-100 text-gray-800 font-medium rounded-md'>
+                      {review.procedureName}
+                    </span>
+                  </p>
+                </div>
+                <div>{renderStars(review.rating)}</div>
+              </div>
             </div>
-            <div className='mb-2'>
-              <p className='text-gray-600'>
-                시술명:{" "}
-                <span className='font-medium'>{review.procedureName}</span>
+            <div className='mt-3'>
+              <p className='text-gray-800 whitespace-pre-line leading-relaxed'>
+                {review.content}
               </p>
-            </div>
-            <div>
-              <p className='text-gray-700'>{review.content}</p>
             </div>
           </div>
         ))}
@@ -103,4 +100,3 @@ const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
 };
 
 export default ReviewList;
-export type { Review, ReviewListProps };

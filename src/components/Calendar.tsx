@@ -131,12 +131,34 @@ const Calendar: React.FC<DesignerData> = ({ availableHours }) => {
       </div>
       <div className='bg-white shadow-md rounded-lg overflow-hidden'>
         <div className='grid grid-cols-7 gap-2 p-4'>
-          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-            <div key={day} className='text-center font-semibold'>
+          {["일", "월", "화", "수", "목", "금", "토"].map((day, index) => (
+            <div
+              key={day}
+              className={`text-center font-semibold ${
+                index === 0
+                  ? "text-red-500"
+                  : index === 6
+                  ? "text-blue-500"
+                  : ""
+              }`}
+            >
               {day}
             </div>
           ))}
-          {days}
+          {days.map((day, index) => (
+            <div
+              key={index} // assuming each day in 'days' has a unique 'date' property
+              className={`text-center ${
+                index % 7 === 0
+                  ? "text-red-500"
+                  : index % 7 === 6
+                  ? "text-blue-500"
+                  : "text-gray-800"
+              }`}
+            >
+              {day}
+            </div>
+          ))}
         </div>
       </div>
       <div className='mt-4 min-h-[90px]'>
